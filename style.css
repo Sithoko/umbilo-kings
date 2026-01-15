@@ -1,0 +1,796 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#contact, #programs, #coach, #stories {
+  scroll-margin-top: 125px; /* navbar height */
+}
+
+
+/* Header */
+/* Header (default: hero state) */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Nav container */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  padding: 1rem 1.5rem;
+}
+
+.header .nav-links a,
+.header .brand-text,
+.header .mobile-toggle {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* After scroll (black text) */
+.header.scrolled .nav-links a,
+.header.scrolled .brand-text,
+.header.scrolled .mobile-toggle {
+  color: #000;
+}
+
+/* In your CSS */
+body {
+  font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+/* Navbar AFTER scroll */
+.header.scrolled {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.header.scrolled a,
+.header.scrolled .brand-text,
+.header.scrolled .mobile-toggle {
+  color: #000;
+}
+
+.header.scrolled .btn-calendly {
+  background: #ff8c42;
+  color: #fff;
+}
+
+.brand-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: #000; /* solid black */
+  margin-left: 0.5rem;
+}
+
+/* Left side: logo + brand */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-brand img {
+  width: 70px; /* adjust logo size */
+  height: auto;
+}
+
+.nav-brand .logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--dark);
+  text-decoration: none;
+}
+
+/* Right side: nav links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 700;
+  transition: color 0.2s;
+  font-size: 18px;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile toggle (hamburger) */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 70px; /* below header */
+    left: 0;           /* Add this */
+    right: 0;          /* Keep this OR use width: 100% */
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;  /* Ensure padding doesn't add to width */
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-links a {
+    color: #000 !important;
+  }
+
+  .nav-links .btn-calendly {
+    color: #fff !important;
+  }
+}
+
+.hero {
+  min-height: 100vh;
+  padding-top: 80px;        /* space for fixed navbar */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url("images/hero-basketball.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header,
+.nav {
+  left: 0;
+  right: 0;
+}
+
+.header,
+.nav {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+.hero p{
+  max-width: 600px; /* Limits text to the left 50-60% of the screen */
+  font-size: 20px;
+  color: #919191;
+  text-align: left;
+}
+
+.hero h1{
+  font-size: 60px;
+}
+
+
+.hero-actions .button {
+  padding: 1rem 2rem;       /* bigger click area */
+  font-size: 1.3rem;        /* larger text */
+  font-weight: 600;
+  border-radius: 0.5rem;
+  margin: 0.5rem;           /* spacing between buttons */
+  cursor: pointer;
+}
+
+/* Targeting the specific button class */
+.training.button {
+  background-color:  #fc7826; /* Your orange tone */
+  color: white;              /* White text */
+  padding: 1rem 2rem;       /* bigger click area */
+  font-size: 1.3rem;        /* larger text */
+  font-weight: 600;
+  border-radius: 0.5rem;
+  margin: 0.5rem;           /* spacing between buttons */
+  cursor: pointer;
+  /* This ensures the scaling animation is smooth */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Add a hover effect for a professional feel */
+.training.button:hover{
+  /* 1.05 means it grows by 5%. Use 1.1 for 10% */
+  transform: scale(1.05);
+}
+
+/* Optional: This makes it "shrink" slightly when clicked */
+.training.button:active {
+  transform: scale(0.98);
+}
+
+/* Add a hover effect for a professional feel */
+.view.button:hover{
+  /* 1.05 means it grows by 5%. Use 1.1 for 10% */
+  transform: scale(1.05);
+}
+
+/* Optional: This makes it "shrink" slightly when clicked */
+.view.button:active {
+  transform: scale(0.98);
+}
+
+.divider-line {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 2rem auto;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;                /* space between stats */
+  margin-top: 3rem;
+}
+
+.stat {
+  text-align: left;
+}
+
+.stat strong {
+  font-size: 1.5rem;        /* bigger numbers */
+  display: block;
+  color: #ff8c42;           /* highlight numbers in orange */
+}
+
+.stat p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.hero p{
+ color: #ddd; /* light white */
+ text-decoration: none;
+ transition: color 0.2s;
+ text-align: left;
+ font-size: 18px;
+}
+
+.hero h1 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.highlight-orange {
+  color: #ff8c42;
+}
+
+.hero h1 {
+  color: #ffffff; /* pure white */
+}
+
+.hero h1:first-of-type {
+  color: #f0f0f0; /* slightly lighter gray for contrast */
+}
+
+/* Button-style nav link */
+.nav-links .btn-nav {
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-orange); /* optional shadow */
+  transition: background 0.3s, transform 0.2s;
+}
+
+.nav-links .btn-nav:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.footer {
+  background-color: #000; /* solid black */
+  padding: 3rem 1.5rem 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+/* Headings in pure white */
+.footer h4,
+.footer h5 {
+  color: #fff;
+  font-family: var(--font-heading);
+  margin-bottom: 0.75rem;
+}
+
+/* Body text in light white/gray */
+.footer p,
+.footer li,
+.footer a {
+  color: #ddd; /* light white */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: var(--primary); /* orange highlight on hover */
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  color: #aaa; /* slightly lighter for copyright */
+}
+
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-icon {
+  font-size: 1.8rem;       /* size of icon */
+  color: #ddd;             /* light white by default */
+  margin-right: 1rem;
+  
+}
+
+.social-icon:hover {
+  color: #E1306C;          /* Instagram pink */
+  transform: scale(1.2);   /* slight zoom on hover */
+}
+
+.contact-section {
+  padding-left: 2em;
+  padding-bottom: 4rem; /* adds space before footer */
+  font-size: 20px;
+}
+
+/* h2 headings: orange */
+.contact-section h5 {
+  color: #FF7A1A; /* orange tone */
+  font-family: var(--font-heading);
+  margin-bottom: 0.35rem;
+  
+}
+
+/* h3 headings: solid black */
+.contact-section h1 {
+  color: #000; /* pure black */
+  font-family: var(--font-heading);
+  margin-top: 0; /* Removes the default top gap of the h1 */
+  margin-bottom: 0;
+}
+
+/* Paragraph text: light black (dark gray) */
+.contact-section p {
+  color: #333; /* light black / dark gray */
+  text-decoration: none;
+  transition: color 0.2s;
+  
+}
+
+.contact-icon {
+  color: #ff8c42; /* your darker orange */
+  margin-right: 0.5rem;
+}
+.contact-info a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.booking-box
+{
+    align-items: center;
+}
+
+.btn-calendly {
+  padding: 1rem 1.5rem;          /* match nav link height */
+  background-color: #ff8c42;
+  color: #fff;
+  font-weight: 400;              /* stronger weight for nav button */
+  border: none;                  /* remove default button border */
+  border-radius: 0.4rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-orange);
+  transition: background 0.3s, transform 0.2s;
+  font-size: 0.95rem;            /* align with nav text size */
+  line-height: 1.2;              /* keeps text vertically centered */
+  font-size: 18px;
+}
+
+.btn-calendly:hover {
+  background-color: #e67300;
+  transform: translateY(-2px);
+}
+
+.pricing-style{
+  background-color: #eaeaea;
+}
+
+/* Pricing and Programs */
+.pricing-style h4{
+  text-align: center;
+  color: #e67300;
+  margin-bottom: 0;
+}
+
+.pricing-style {
+  padding: 6rem 1.5rem;
+  color: #000;
+}
+
+.pricing-style h2 {
+  color: #000; 
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.20em;
+  margin-top: 0; /* Removes the default top gap of the h1 */
+}
+
+.pricing-style p{
+  text-align: center;
+  margin-bottom: 4rem;
+  margin-top: 0; /* Removes the default top gap of the h1 */
+  color:#555; /* light black / dark gray */
+  font-size: 18px;
+}
+
+/* Grid layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Base card styling */
+.card {
+  background: #fff;
+  color: #000;
+  border-radius: 1.2rem;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.card p {
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Price Emphasis */
+.card p strong {
+  font-size: 2.5rem;
+  font-weight: 800;
+  display: block;
+  color: #000;
+}
+
+/* Feature list with orange checkmarks */
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.card ul li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.card ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #ff8c42;
+  font-weight: bold;
+}
+
+/* “Most Popular” featured card */
+.card.featured {
+  background: linear-gradient(180deg, #ff8c42, #ff6a00);
+  color: #fff;
+  transform: translateY(-15px);
+}
+
+.card.featured p,
+.card.featured li {
+  color: #fff;
+}
+
+.card.featured ul li::before {
+  color: #fff;
+}
+
+/* Badge (MOST POPULAR) */
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Buttons (match image style) */
+.card .btn {
+  text-align: center;
+  background: linear-gradient(135deg, #ff8c42, #ff6a00);
+  color: #fff;
+  padding: 0.9rem;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card.featured .btn {
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+/* Space between .card and .btn targets the button INSIDE the card */
+.card .btn:hover {
+  transform: scale(1.05);
+  background-color: #e66a16; /* Optional: darken the orange slightly on hover */
+}
+
+/* Important: Add this to the original button style so the animation is smooth */
+.btn {
+  display: inline-block;
+  transition: transform 0.3s ease; 
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+  .card.featured {
+    transform: none;
+  }
+}
+
+/* Coach Section */
+.coach-container {
+  display: flex;          /* This puts image and text in a row */
+  align-items: center;    /* Centers the text vertically relative to the image */
+  gap: 40px;              /* Adds space between the image and the text */
+  max-width: 1000px;      /* Keeps the section from getting too wide */
+  margin: 0 auto;         /* Centers the whole section on the page */
+  max-width: 1200px;
+}
+
+.coach-image img {
+  width: 600px;           /* Adjust size as needed */
+  height: auto;
+  border-radius: 8px;
+  margin-top: 4em;
+  margin-left: 0.5em;
+  margin-bottom: 2em;
+}
+
+.coach-text {
+  flex: 1;                /* Makes the text fill the remaining space */
+}
+
+.coach-text h4{
+  text-align: left;
+  color: #e67300;
+  margin-bottom: 0;
+}
+
+.coach-text p{
+  text-align: left;
+  color:#555;
+  font-size: 18px;
+}
+
+.coach-text h3{
+  font-size: 35px;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Mobile Responsive: Stack them on top of each other on small screens */
+@media (max-width: 768px) {
+  .coach-container {
+    flex-direction: column;
+    text-align: center;   /* Centers text when stacked */
+  }
+}
+
+.qualifications-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* This creates the 2-column look from your image */
+  gap: 15px 40px;
+  margin-bottom: 0.5em;
+}
+
+.qualifications-list li {
+  display: flex;
+  align-items: center;
+  font-family: 'Aptos', sans-serif;
+  font-size: 1rem;
+}
+
+.qualifications-list i {
+  color: #FF7A1A;     /* This makes the icon your specific orange */
+  margin-right: 12px; /* Space between the tick and the text */
+  font-size: 1.2rem;  /* Adjust the size of the icon */
+}
+
+.stories{
+  background-color: #eaeaea;
+  padding-top: 50px;    /* Internal space at the top */
+  padding-bottom: 80px; /* Internal space at the bottom */
+}
+
+.success-stories h1{
+  text-align: center;
+  font-size: 35px;
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+.success-stories h4{
+  text-align: center;
+  color: #e67300;
+  margin-bottom: 0;
+}
+
+.success-stories p{
+  text-align: center;
+  color:#555;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+.achievements-row {
+  display: flex;            /* Puts the items side-by-side */
+  gap: 40px;                /* Space between the two columns */
+  justify-content: center;  /* Centers the columns on the page */
+  max-width: 1100px;
+  margin: 0 auto;           /* Centers the whole section */
+  padding: 40px 20px;
+}
+
+.achievement-item img {
+  width: 100%;              /* Adjust this to resize your images */
+  max-width: 400px;         /* Limits the image size */
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 20px;      /* Gap between image and text */
+}
+
+.achievement-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+}
+
+.achievement-item {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Soft, modern shadow */
+  border-top: 4px solid #FF7A1A;          /* Branded orange accent */
+  transition: transform 0.3s ease;        /* Preparation for hover effect */
+  text-align: center;
+}
+
+.achievement-item:hover {
+  transform: translateY(-10px);           /* Lifts the card when hovered */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Mobile Responsive: Stack them on top of each other on phones */
+@media (max-width: 768px) {
+  .achievements-row {
+    flex-direction: column;
+  }
+}
+
+.instagram-link {
+  color: inherit;            /* Keeps the text black/default color */
+  text-decoration: none;     /* Removes the underline */
+  transition: color 0.3s;
+}
+
+.instagram-link:hover {
+  color: #000    ;        /* Turns orange when hovered to show it's clickable */
+}
