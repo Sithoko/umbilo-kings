@@ -85,9 +85,10 @@ h1, h2, h3, h4, h5, h6 {
 .brand-text {
   font-family: "Inter", sans-serif;
   font-weight: 900;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   color: #000; /* solid black */
-  margin-left: 0.5rem;
+  margin-left: 0.1rem;
+  letter-spacing: 0.05rem;
 }
 
 /* Left side: logo + brand */
@@ -98,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-brand img {
-  width: 130px; /* adjust logo size */
+  width: 110px; /* adjust logo size */
   height: auto;
 }
 
